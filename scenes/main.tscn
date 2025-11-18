@@ -1,3 +1,48 @@
-[gd_scene format=3 uid="uid://dyklan2ybksqp"]
+[gd_scene load_steps=7 format=3 uid="uid://dyklan2ybksqp"]
+
+[ext_resource type="Script" uid="uid://c7ag7fagyiu31" path="res://scripts/bits/bot.gd" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://dj3xlex42m68t" path="res://scripts/bits/move/move_master.gd" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://2gqf43rfyg4e" path="res://scripts/bits/move/platformer.gd" id="2_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://d16je1kvspw26" path="res://assets/resources/placeholder.tres" id="3_tbgi4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
+size = Vector2(50, 20)
 
 [node name="Main" type="Node"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_jyhfs")
+
+[node name="MoveMasterBit" type="Node" parent="CharacterBody2D"]
+script = ExtResource("1_sugp2")
+metadata/_custom_type_script = "uid://dj3xlex42m68t"
+
+[node name="Platformer" type="Node" parent="CharacterBody2D/MoveMasterBit"]
+script = ExtResource("2_jyhfs")
+jump_velocity = 120.0
+gravity = 0.2
+ground_acceleration = 375.0
+ground_max_speed = 50.0
+ground_friction = 400.0
+air_acceleration = 300.0
+air_max_speed = 50.0
+air_friction = 50.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+texture = ExtResource("3_tbgi4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_jyhfs")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-2, 27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_tefeu")
