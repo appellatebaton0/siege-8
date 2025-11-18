@@ -33,9 +33,7 @@ func _ready() -> void:
 	elif len(move_bits) > 0:
 		change_to(move_bits[0])
 	
-	for bit in move_bits:
-		bit.mover = mover
-		bit.master = self
+	for bit in move_bits: bit.init_with(mover, self)
 
 func _process(delta: float) -> void:
 	for bit in move_bits:

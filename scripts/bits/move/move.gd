@@ -21,6 +21,12 @@ func pass_call(call_name:String, arg = null):
 		call(call_name)
 		
 		for bit in next_bits: bit.pass_call(call_name)
+func init_with(set_mover:CharacterBody2D, set_master:MoveMasterBit):
+	mover  = set_mover
+	master = set_master
+	
+	for bit in next_bits:
+		bit.init_with(set_mover, set_master)
 
 func _on_active():
 	pass
