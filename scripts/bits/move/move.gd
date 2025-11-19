@@ -1,6 +1,6 @@
 @abstract class_name MoveBit extends Bit
 
-@onready var mover:CharacterBody2D
+@onready var mover:CharacterBody3D
 @onready var master:MoveMasterBit
 
 @onready var next_bits := get_next_bits()
@@ -21,7 +21,7 @@ func pass_call(call_name:String, arg = null):
 		call(call_name)
 		
 		for bit in next_bits: bit.pass_call(call_name)
-func init_with(set_mover:CharacterBody2D, set_master:MoveMasterBit):
+func init_with(set_mover:CharacterBody3D, set_master:MoveMasterBit):
 	mover  = set_mover
 	master = set_master
 	

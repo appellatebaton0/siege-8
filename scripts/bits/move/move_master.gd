@@ -1,9 +1,9 @@
 class_name MoveMasterBit extends Bit
 
 @onready var mover := get_mover()
-func get_mover(depth := 2, with:Node = self) -> CharacterBody2D:
+func get_mover(depth := 2, with:Node = self) -> CharacterBody3D:
 	if depth <= 0: return null
-	if with is CharacterBody2D: return with
+	if with is CharacterBody3D: return with
 	else: return get_mover(depth - 1, with.get_parent())
 
 @onready var move_bits := get_move_bits()
@@ -49,6 +49,6 @@ func _physics_process(delta: float) -> void: if mover != null:
 	mover.move_and_slide()
 	
 	if bot != mover:
-		if bot != null: if bot.is_class("Node2D"): bot.global_position += mover.position
-		mover.position = Vector2.ZERO
+		if bot != null: if bot.is_class("Node3D"): bot.global_position += mover.position
+		mover.position = Vector3.ZERO
 	
