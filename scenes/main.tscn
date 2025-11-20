@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyklan2ybksqp"]
+[gd_scene load_steps=10 format=3 uid="uid://dyklan2ybksqp"]
 
 [ext_resource type="Script" uid="uid://c7ag7fagyiu31" path="res://scripts/bits/bot.gd" id="1_jyhfs"]
 [ext_resource type="Script" uid="uid://dj3xlex42m68t" path="res://scripts/bits/move/move_master.gd" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://bf6q85vc8ov3v" path="res://scripts/bits/camera.gd" id="3_jyhfs"]
+[ext_resource type="Script" uid="uid://b3se72sg5yno4" path="res://scripts/bits/move/straight.gd" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://b0d5lr3imvsb5" path="res://scripts/values/node/manual.gd" id="7_o6xl0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sugp2"]
@@ -33,6 +34,9 @@ script = ExtResource("1_jyhfs")
 [node name="MoveMasterBit" type="Node" parent="Player"]
 script = ExtResource("1_sugp2")
 metadata/_custom_type_script = "uid://dj3xlex42m68t"
+
+[node name="Node" type="Node" parent="Player/MoveMasterBit"]
+script = ExtResource("3_tbgi4")
 
 [node name="CameraBit" type="Camera3D" parent="Player" node_paths=PackedStringArray("y_target", "x_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6094018)
