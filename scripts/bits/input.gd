@@ -16,11 +16,9 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed(input_name):
 		
-		print("I")
-		
 		if condition != null:
 			var cvalue = condition.value()
-			print("C -> ", cvalue)
+			
 			if cvalue: just_true .emit()
 			else:      just_false.emit()
 		

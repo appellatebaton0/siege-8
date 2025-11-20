@@ -37,6 +37,5 @@ func _ready() -> void:
 		anim_player = search_player(self)
 
 func animate():
-	print(anim_player, " -> ", animation)
 	if anim_player != null:
 		anim_player.play(animation)
