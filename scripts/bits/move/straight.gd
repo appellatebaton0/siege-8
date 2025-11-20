@@ -1,7 +1,7 @@
 class_name StraightMove extends MoveBit
 
-@export var max_speed := 15.0
-@export var acceleration := 40.0
+@export var max_speed := 12.0
+@export var acceleration := 30.0
 var speed = 0.0
 
 func _physics_process(delta: float) -> void:

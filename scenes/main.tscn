@@ -1,10 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyklan2ybksqp"]
+[gd_scene load_steps=21 format=3 uid="uid://dyklan2ybksqp"]
 
 [ext_resource type="Script" uid="uid://c7ag7fagyiu31" path="res://scripts/bits/bot.gd" id="1_jyhfs"]
 [ext_resource type="Script" uid="uid://dj3xlex42m68t" path="res://scripts/bits/move/move_master.gd" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://bf6q85vc8ov3v" path="res://scripts/bits/camera.gd" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://b3se72sg5yno4" path="res://scripts/bits/move/straight.gd" id="3_tbgi4"]
+[ext_resource type="Script" uid="uid://c8v3384bf3aau" path="res://scripts/bits/mouse_capture.gd" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://b0d5lr3imvsb5" path="res://scripts/values/node/manual.gd" id="7_o6xl0"]
+[ext_resource type="Script" uid="uid://d0kkqlrbgvvua" path="res://scripts/bits/player_animator.gd" id="7_tipki"]
+[ext_resource type="Script" uid="uid://cfoo2dw202481" path="res://scripts/bits/input.gd" id="8_tipki"]
+[ext_resource type="Script" uid="uid://ddp5ul27gxmac" path="res://scripts/values/bool/cast.gd" id="9_choun"]
+[ext_resource type="Script" uid="uid://b1tqakminffgo" path="res://scripts/values/bool/and.gd" id="9_ya4ey"]
+[ext_resource type="Script" uid="uid://bt66px7dxwvem" path="res://scripts/values/bool/not.gd" id="10_eb6dy"]
+[ext_resource type="Script" uid="uid://5h7ohal2js4w" path="res://scripts/values/property.gd" id="10_ya4ey"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sugp2"]
 size = Vector3(10, 1, 10)
@@ -15,6 +22,204 @@ size = Vector3(10, 1, 10)
 [sub_resource type="SphereMesh" id="SphereMesh_tbgi4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tefeu"]
+
+[sub_resource type="Animation" id="Animation_o6xl0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pause/MouseCapturer:update_mouse_mode")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pause/MouseCapturer:update")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pause/PauseUnpause:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["unpause"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("InputBlocker:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pause:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tbgi4"]
+resource_name = "pause"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pause/MouseCapturer:update_mouse_mode")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pause/MouseCapturer:update")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pause/PauseUnpause:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["unpause"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("InputBlocker:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pause:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tefeu"]
+resource_name = "unpause"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pause/MouseCapturer:update_mouse_mode")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pause/MouseCapturer:update")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pause/PauseUnpause:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["pause"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("InputBlocker:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pause:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o6xl0"]
+_data = {
+&"RESET": SubResource("Animation_o6xl0"),
+&"pause": SubResource("Animation_tbgi4"),
+&"unpause": SubResource("Animation_tefeu")
+}
 
 [node name="Main" type="Node"]
 
@@ -43,7 +248,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6094018)
 script = ExtResource("3_jyhfs")
 y_target = NodePath("Player")
 x_target = NodePath("Player")
-must_be_captured = false
 
 [node name="Player" type="Node" parent="Player/CameraBit" node_paths=PackedStringArray("input")]
 script = ExtResource("7_o6xl0")
@@ -59,3 +263,84 @@ shape = SubResource("SphereShape3D_tefeu")
 [node name="SpotLight3D" type="SpotLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.62921715)
 shadow_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pause" type="MarginContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/Pause"]
+layout_mode = 2
+
+[node name="MouseCapturer" type="Node" parent="CanvasLayer/Control/Pause"]
+script = ExtResource("6_tefeu")
+update_mouse_mode = 0
+update = true
+metadata/_custom_type_script = "uid://c8v3384bf3aau"
+
+[node name="PauseUnpause" type="Node" parent="CanvasLayer/Control/Pause"]
+script = ExtResource("7_tipki")
+animation = "unpause"
+metadata/_custom_type_script = "uid://d0kkqlrbgvvua"
+
+[node name="PauseInput" type="Node" parent="CanvasLayer/Control/Pause"]
+script = ExtResource("8_tipki")
+input_name = "Pause"
+metadata/_custom_type_script = "uid://cfoo2dw202481"
+
+[node name="AndBool" type="Node" parent="CanvasLayer/Control/Pause/PauseInput" node_paths=PackedStringArray("inputs")]
+script = ExtResource("9_ya4ey")
+inputs = [null, null]
+metadata/_custom_type_script = "uid://b1tqakminffgo"
+
+[node name="NotBool" type="Node" parent="CanvasLayer/Control/Pause/PauseInput/AndBool" node_paths=PackedStringArray("input")]
+script = ExtResource("10_eb6dy")
+input = NodePath("../../../../AnimationPlayer/Playing")
+metadata/_custom_type_script = "uid://bt66px7dxwvem"
+
+[node name="InputBlocker" type="Control" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control"]
+libraries = {
+&"": SubResource("AnimationLibrary_o6xl0")
+}
+
+[node name="Playing" type="Node" parent="CanvasLayer/Control/AnimationPlayer"]
+script = ExtResource("9_choun")
+metadata/_custom_type_script = "uid://ddp5ul27gxmac"
+
+[node name="IsPlaying" type="Node" parent="CanvasLayer/Control/AnimationPlayer/Playing"]
+script = ExtResource("10_ya4ey")
+property_name = "is_playing()"
+metadata/_custom_type_script = "uid://5h7ohal2js4w"
+
+[node name="ManualNode" type="Node" parent="CanvasLayer/Control/AnimationPlayer/Playing/IsPlaying" node_paths=PackedStringArray("input")]
+script = ExtResource("7_o6xl0")
+input = NodePath("../../..")
+metadata/_custom_type_script = "uid://b0d5lr3imvsb5"
+
+[connection signal="just_true" from="CanvasLayer/Control/Pause/PauseInput" to="CanvasLayer/Control/Pause/PauseUnpause" method="animate"]
