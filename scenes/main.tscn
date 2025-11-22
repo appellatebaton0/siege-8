@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://dyklan2ybksqp"]
+[gd_scene load_steps=23 format=3 uid="uid://dyklan2ybksqp"]
 
 [ext_resource type="Script" uid="uid://c7ag7fagyiu31" path="res://scripts/bits/bot.gd" id="1_jyhfs"]
 [ext_resource type="Script" uid="uid://dj3xlex42m68t" path="res://scripts/bits/move/move_master.gd" id="1_sugp2"]
+[ext_resource type="MeshLibrary" uid="uid://cgulc8q3xxmol" path="res://assets/resources/gridmap.tres" id="1_trceg"]
 [ext_resource type="Script" uid="uid://bf6q85vc8ov3v" path="res://scripts/bits/camera.gd" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://b3se72sg5yno4" path="res://scripts/bits/move/straight.gd" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://c8v3384bf3aau" path="res://scripts/bits/mouse_capture.gd" id="6_tefeu"]
@@ -12,12 +13,6 @@
 [ext_resource type="Script" uid="uid://b1tqakminffgo" path="res://scripts/values/bool/and.gd" id="9_ya4ey"]
 [ext_resource type="Script" uid="uid://bt66px7dxwvem" path="res://scripts/values/bool/not.gd" id="10_eb6dy"]
 [ext_resource type="Script" uid="uid://5h7ohal2js4w" path="res://scripts/values/property.gd" id="10_ya4ey"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_sugp2"]
-size = Vector3(10, 1, 10)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jyhfs"]
-size = Vector3(10, 1, 10)
 
 [sub_resource type="SphereMesh" id="SphereMesh_tbgi4"]
 
@@ -221,15 +216,23 @@ _data = {
 &"unpause": SubResource("Animation_tefeu")
 }
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_trceg"]
+
+[sub_resource type="Sky" id="Sky_a8y0u"]
+sky_material = SubResource("ProceduralSkyMaterial_trceg")
+
+[sub_resource type="Environment" id="Environment_jkv2x"]
+background_mode = 2
+sky = SubResource("Sky_a8y0u")
+
 [node name="Main" type="Node"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_sugp2")
-
-[node name="MESH" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_jyhfs")
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_trceg")
+data = {
+"cells": PackedInt32Array(-65536, 65535, 2, -65535, 65535, 2, -65535, 0, 2, -65534, 0, 2, -65535, 1, 2, -65536, 1, 2, -65536, 2, 2, -1, 2, 2, -1, 1, 2, -1, 0, 2, -1, 65535, 2, -1, 65534, 2, -65536, 65534, 2, -65535, 65534, 2, -65534, 65535, 2, -2, 1, 2, -2, 0, 2, -2, 65535, 2, -2, 65534, 2, -65535, 2, 2, -65536, 0, 2, -3, 2, 2, -3, 1, 2, -3, 0, 2, -3, 65535, 2, -3, 65534, 2, 1, 2, 2, 0, 2, 2, 65535, 2, 2, 65533, 2, 2, 65534, 2, 2, 2, 0, 131072, 65538, 0, 131073, 65537, 0, 1114112, 65536, 0, 1114112, 131071, 0, 1114112, 131070, 0, 1114112, 131069, 0, 1114112, 131069, 1, 1114112, 131068, 1, 1114112, 131068, 2, 1114112)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5950165, 0)
@@ -244,7 +247,7 @@ metadata/_custom_type_script = "uid://dj3xlex42m68t"
 script = ExtResource("3_tbgi4")
 
 [node name="CameraBit" type="Camera3D" parent="Player" node_paths=PackedStringArray("y_target", "x_target")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6094018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.26945364)
 script = ExtResource("3_jyhfs")
 y_target = NodePath("Player")
 x_target = NodePath("Player")
@@ -261,7 +264,7 @@ mesh = SubResource("SphereMesh_tbgi4")
 shape = SubResource("SphereShape3D_tefeu")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.62921715)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.22921714)
 shadow_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -342,5 +345,8 @@ metadata/_custom_type_script = "uid://5h7ohal2js4w"
 script = ExtResource("7_o6xl0")
 input = NodePath("../../..")
 metadata/_custom_type_script = "uid://b0d5lr3imvsb5"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jkv2x")
 
 [connection signal="just_true" from="CanvasLayer/Control/Pause/PauseInput" to="CanvasLayer/Control/Pause/PauseUnpause" method="animate"]
