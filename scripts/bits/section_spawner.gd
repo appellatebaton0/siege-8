@@ -7,6 +7,8 @@ var real_parent:Node
 var real_options:Array[PackedScene]
 
 @export var grid_size := Vector3(14, 14, 14)
+@export var spawn_width := 3
+@export var clear_width := 4
 
 var rooms:Array[Node]
 
@@ -26,17 +28,17 @@ func spawn_new(coords:Vector3):
 	
 	rooms.append(new)
 
-func fill_space(size := 2):
-	for i in range(-size + 1, size):
-		for j in range(-size + 1, size):
-			for k in range(-size + 1, size):
+func fill_space():
+	for i in range(-spawn_width + 1,spawn_width):
+		for j in range(-spawn_width + 1,spawn_width):
+			for k in range(-spawn_width + 1,spawn_width):
 				var coords = Vector3(i,j,k) + (grid_lock(bot.global_position) / grid_size)
 				if not has_room_at(coords):
 					spawn_new(coords)
 
-func clear_space(dist := 4):
+func clear_space():
 	for room in rooms:
-		if room.global_position.distance_to(bot.global_position) > dist * grid_size.x:
+		if room.global_position.distance_to(bot.global_position) > clear_width * grid_size.x:
 			rooms.erase(room)
 			room.queue_free()
 
@@ -60,11 +62,9 @@ func _ready() -> void:
 	real_parent  = parent.value()
 
 func _process(delta: float) -> void:
-	print(len(rooms))
 	fill_space()
 	clear_space()
 	
 	var me = self
 	if me is Node3D:
-		
 		me.global_position = grid_lock(bot.global_position)

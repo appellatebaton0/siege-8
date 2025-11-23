@@ -1,6 +1,5 @@
-[gd_scene load_steps=27 format=3 uid="uid://dyklan2ybksqp"]
+[gd_scene load_steps=26 format=3 uid="uid://dyklan2ybksqp"]
 
-[ext_resource type="PackedScene" uid="uid://do1ekgbbl3cut" path="res://scenes/sections/test.tscn" id="1_jbj1t"]
 [ext_resource type="Script" uid="uid://c7ag7fagyiu31" path="res://scripts/bits/bot.gd" id="1_jyhfs"]
 [ext_resource type="Script" uid="uid://dj3xlex42m68t" path="res://scripts/bits/move/move_master.gd" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://bf6q85vc8ov3v" path="res://scripts/bits/camera.gd" id="3_jyhfs"]
@@ -12,9 +11,9 @@
 [ext_resource type="Script" uid="uid://b255w0k83u24a" path="res://scripts/values/node/group.gd" id="8_muem4"]
 [ext_resource type="Script" uid="uid://cfoo2dw202481" path="res://scripts/bits/input.gd" id="8_tipki"]
 [ext_resource type="Script" uid="uid://ddp5ul27gxmac" path="res://scripts/values/bool/cast.gd" id="9_choun"]
-[ext_resource type="Script" uid="uid://lgklu54a0io7" path="res://scripts/values/scenes/manual.gd" id="9_dp3eg"]
 [ext_resource type="Script" uid="uid://b1tqakminffgo" path="res://scripts/values/bool/and.gd" id="9_ya4ey"]
 [ext_resource type="Script" uid="uid://bt66px7dxwvem" path="res://scripts/values/bool/not.gd" id="10_eb6dy"]
+[ext_resource type="Script" uid="uid://0cyqblctuuol" path="res://scripts/values/scenes/directory.gd" id="10_muem4"]
 [ext_resource type="Script" uid="uid://5h7ohal2js4w" path="res://scripts/values/property.gd" id="10_ya4ey"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_tbgi4"]
@@ -229,6 +228,8 @@ sky_material = SubResource("ProceduralSkyMaterial_trceg")
 [sub_resource type="Environment" id="Environment_jkv2x"]
 background_mode = 2
 sky = SubResource("Sky_a8y0u")
+fog_enabled = true
+fog_density = 0.4
 
 [node name="Main" type="Node" groups=["Main"]]
 
@@ -243,6 +244,8 @@ metadata/_custom_type_script = "uid://dj3xlex42m68t"
 
 [node name="Node" type="Node" parent="Player/MoveMasterBit"]
 script = ExtResource("3_tbgi4")
+max_speed = 18.0
+acceleration = 50.0
 
 [node name="CameraBit" type="Camera3D" parent="Player" node_paths=PackedStringArray("y_target", "x_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.26945364)
@@ -261,12 +264,17 @@ mesh = SubResource("SphereMesh_tbgi4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("SphereShape3D_tefeu")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
+[node name="SpotLight3D" type="OmniLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.22921714)
+light_color = Color(0.30980393, 1, 1, 1)
+light_energy = 3.0
 shadow_enabled = true
+omni_range = 1200.0
 
 [node name="SectionSpawner" type="Node3D" parent="Player"]
 script = ExtResource("7_a8y0u")
+spawn_width = 4
+clear_width = 5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player/SectionSpawner"]
 mesh = SubResource("SphereMesh_a8y0u")
@@ -276,10 +284,10 @@ script = ExtResource("8_muem4")
 group_name = "Main"
 metadata/_custom_type_script = "uid://b255w0k83u24a"
 
-[node name="ManualScenes" type="Node" parent="Player/SectionSpawner"]
-script = ExtResource("9_dp3eg")
-inputs = Array[PackedScene]([ExtResource("1_jbj1t")])
-metadata/_custom_type_script = "uid://lgklu54a0io7"
+[node name="DirectoryScenes" type="Node" parent="Player/SectionSpawner"]
+script = ExtResource("10_muem4")
+directory = "res://scenes/sections"
+metadata/_custom_type_script = "uid://0cyqblctuuol"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
