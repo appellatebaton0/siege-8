@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://6x2fc7st4csu"]
+[gd_scene load_steps=8 format=3 uid="uid://6x2fc7st4csu"]
 
 [ext_resource type="MeshLibrary" uid="uid://cgulc8q3xxmol" path="res://assets/resources/gridmap.tres" id="1_w3k3i"]
 [ext_resource type="PackedScene" uid="uid://bswvemjcdcyr4" path="res://assets/models/pellet.glb" id="2_s3lmr"]
 [ext_resource type="Script" uid="uid://c7ag7fagyiu31" path="res://scripts/bits/bot.gd" id="3_oy7md"]
-[ext_resource type="Script" uid="uid://dsgcdo7tmwdgq" path="res://scripts/bits/func_caller.gd" id="4_podn0"]
-[ext_resource type="Script" uid="uid://b255w0k83u24a" path="res://scripts/values/node/group.gd" id="5_oy7md"]
+[ext_resource type="Script" path="res://scripts/bits/func_caller.gd" id="4_podn0"]
+[ext_resource type="Script" path="res://scripts/values/node/group.gd" id="5_oy7md"]
+[ext_resource type="AudioStream" uid="uid://cmna5bvlqcif0" path="res://assets/audio/pickup.wav" id="6_podn0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d1b4j"]
 radius = 1.5
@@ -15,6 +16,9 @@ data = {
 "cells": PackedInt32Array(0, 0, 1114114, 0, 1, 1114114, 0, 2, 1114114, 0, 3, 1114114, 0, 4, 1114114, 0, 5, 1114114, 0, 6, 1114114, 65536, 0, 1114114, 65536, 6, 1114114, 131072, 0, 1114114, 131072, 6, 1114114, 196608, 0, 1114114, 196608, 6, 1114114, 262144, 0, 1114114, 262144, 6, 1114114, 327680, 0, 1114114, 327680, 6, 1114114, 393216, 0, 1114114, 393216, 1, 1114114, 393216, 2, 1114114, 393216, 3, 1114114, 393216, 4, 1114114, 393216, 5, 1114114, 393216, 6, 1114114, 393217, 0, 1114114, 393218, 0, 1114114, 393219, 0, 1114114, 393220, 0, 1114114, 393221, 0, 1114114, 393222, 0, 1114114, 327686, 0, 1114114, 262150, 0, 1114114, 196614, 0, 1114114, 131078, 0, 1114114, 65542, 0, 1114114, 6, 0, 1114114, 1, 0, 1114114, 2, 0, 1114114, 3, 0, 1114114, 4, 0, 1114114, 5, 0, 1114114, 393217, 6, 1114114, 393218, 6, 1114114, 393219, 6, 1114114, 393220, 6, 1114114, 393221, 6, 1114114, 393222, 6, 1114114, 327686, 6, 1114114, 262150, 6, 1114114, 196614, 6, 1114114, 131078, 6, 1114114, 65542, 6, 1114114, 6, 6, 1114114, 1, 6, 1114114, 2, 6, 1114114, 3, 6, 1114114, 4, 6, 1114114, 5, 6, 1114114, 393222, 5, 1114114, 393222, 4, 1114114, 393222, 3, 1114114, 393222, 2, 1114114, 393222, 1, 1114114, 6, 1, 1114114, 6, 2, 1114114, 6, 3, 1114114, 6, 4, 1114114, 6, 5, 1114114)
 }
 metadata/_editor_floor_ = Vector3(0, 7, 6)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_podn0")
 
 [node name="pellet" parent="." instance=ExtResource("2_s3lmr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 7, 7)
@@ -32,8 +36,8 @@ function_name = "add"
 [node name="GroupNode" type="Node" parent="pellet/AddTime"]
 script = ExtResource("5_oy7md")
 group_name = "Timer"
-metadata/_custom_type_script = "uid://b255w0k83u24a"
 
+[connection signal="tree_exiting" from="pellet" to="AudioStreamPlayer" method="play"]
 [connection signal="area_entered" from="pellet/Area3D" to="pellet" method="free_bot"]
 [connection signal="area_entered" from="pellet/Area3D" to="pellet/AddTime" method="call_func"]
 [connection signal="body_entered" from="pellet/Area3D" to="pellet" method="free_bot"]

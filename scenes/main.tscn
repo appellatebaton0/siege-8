@@ -1,26 +1,103 @@
-[gd_scene load_steps=29 format=3 uid="uid://dyklan2ybksqp"]
+[gd_scene load_steps=37 format=3 uid="uid://dyklan2ybksqp"]
 
 [ext_resource type="Script" uid="uid://c7ag7fagyiu31" path="res://scripts/bits/bot.gd" id="1_jyhfs"]
 [ext_resource type="Script" uid="uid://dj3xlex42m68t" path="res://scripts/bits/move/move_master.gd" id="1_sugp2"]
-[ext_resource type="Script" uid="uid://bf6q85vc8ov3v" path="res://scripts/bits/camera.gd" id="3_jyhfs"]
+[ext_resource type="Script" path="res://scripts/bits/camera.gd" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://b3se72sg5yno4" path="res://scripts/bits/move/straight.gd" id="3_tbgi4"]
-[ext_resource type="Script" uid="uid://c8v3384bf3aau" path="res://scripts/bits/mouse_capture.gd" id="6_tefeu"]
-[ext_resource type="Script" uid="uid://p3bkyn60vkty" path="res://scripts/bits/section_spawner.gd" id="7_a8y0u"]
+[ext_resource type="Script" path="res://scripts/bits/mouse_capture.gd" id="6_tefeu"]
+[ext_resource type="Script" path="res://scripts/bits/section_spawner.gd" id="7_a8y0u"]
 [ext_resource type="Script" uid="uid://b0d5lr3imvsb5" path="res://scripts/values/node/manual.gd" id="7_o6xl0"]
-[ext_resource type="Script" uid="uid://d0kkqlrbgvvua" path="res://scripts/bits/player_animator.gd" id="7_tipki"]
-[ext_resource type="Script" uid="uid://b255w0k83u24a" path="res://scripts/values/node/group.gd" id="8_muem4"]
-[ext_resource type="Script" uid="uid://cfoo2dw202481" path="res://scripts/bits/input.gd" id="8_tipki"]
+[ext_resource type="Script" path="res://scripts/bits/player_animator.gd" id="7_tipki"]
+[ext_resource type="Script" path="res://scripts/values/node/group.gd" id="8_muem4"]
+[ext_resource type="Script" path="res://scripts/bits/input.gd" id="8_tipki"]
 [ext_resource type="Script" uid="uid://ddp5ul27gxmac" path="res://scripts/values/bool/cast.gd" id="9_choun"]
-[ext_resource type="Script" uid="uid://c71wnn3fi6nxv" path="res://scripts/bits/replacer.gd" id="9_muem4"]
+[ext_resource type="Script" path="res://scripts/bits/replacer.gd" id="9_muem4"]
 [ext_resource type="Script" uid="uid://b1tqakminffgo" path="res://scripts/values/bool/and.gd" id="9_ya4ey"]
 [ext_resource type="Script" uid="uid://bt66px7dxwvem" path="res://scripts/values/bool/not.gd" id="10_eb6dy"]
 [ext_resource type="Script" uid="uid://0cyqblctuuol" path="res://scripts/values/scenes/directory.gd" id="10_muem4"]
 [ext_resource type="Script" uid="uid://5h7ohal2js4w" path="res://scripts/values/property.gd" id="10_ya4ey"]
-[ext_resource type="Script" uid="uid://b27rmrvmdlfe5" path="res://scripts/bits/timer.gd" id="16_jbj1t"]
+[ext_resource type="Script" path="res://scripts/bits/timer.gd" id="16_jbj1t"]
+[ext_resource type="AudioStream" uid="uid://djajosybqd23h" path="res://assets/audio/ambience.ogg" id="18_dp3eg"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_tbgi4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tefeu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqmmt"]
+bg_color = Color(0.48, 0.33567998, 0.2832, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.03137255, 0.015686275, 0.011764706, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc10j"]
+bg_color = Color(0.38, 0.26574665, 0.22420001, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.03137255, 0.015686275, 0.011764706, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jscy8"]
+bg_color = Color(0.24, 0.16783999, 0.1416, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.03137255, 0.015686275, 0.011764706, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm3ni"]
+bg_color = Color(0.14901961, 0.08235294, 0.05882353, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.03137255, 0.015686275, 0.011764706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp3eg"]
+bg_color = Color(0.15, 0.082499996, 0.06, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.03, 0.016579999, 0.0117, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ld40"]
+bg_color = Color(0.3318, 0.52271676, 0.79, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.003054266, 0.020780973, 0.05250085, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_gqmmt"]
+Button/styles/hover = SubResource("StyleBoxFlat_gqmmt")
+Button/styles/normal = SubResource("StyleBoxFlat_yc10j")
+Button/styles/pressed = SubResource("StyleBoxFlat_jscy8")
+Panel/styles/panel = SubResource("StyleBoxFlat_pm3ni")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_dp3eg")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_0ld40")
 
 [sub_resource type="Animation" id="Animation_o6xl0"]
 length = 0.001
@@ -97,6 +174,58 @@ tracks/5/keys = {
 "values": [Vector2(0, -648)]
 }
 
+[sub_resource type="Animation" id="Animation_muem4"]
+resource_name = "lose"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lose:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InputBlocker:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pause/MouseCapturer:update_mouse_mode")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pause/MouseCapturer:update")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_tbgi4"]
 resource_name = "pause"
 length = 0.5
@@ -161,6 +290,58 @@ tracks/4/keys = {
 "values": [Vector2(0, -648), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_jbj1t"]
+resource_name = "retry"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lose:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InputBlocker:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pause/MouseCapturer:update_mouse_mode")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pause/MouseCapturer:update")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_tefeu"]
 resource_name = "unpause"
 length = 0.5
@@ -223,110 +404,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -648)]
-}
-
-[sub_resource type="Animation" id="Animation_jbj1t"]
-resource_name = "retry"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lose:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -648)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InputBlocker:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Pause/MouseCapturer:update_mouse_mode")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Pause/MouseCapturer:update")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_muem4"]
-resource_name = "lose"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lose:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -648), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InputBlocker:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Pause/MouseCapturer:update_mouse_mode")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Pause/MouseCapturer:update")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o6xl0"]
@@ -398,12 +475,11 @@ omni_range = 1200.0
 [node name="SectionSpawner" type="Node3D" parent="Player"]
 script = ExtResource("7_a8y0u")
 spawn_width = 4
-clear_width = 5
+clear_width = 7
 
 [node name="GroupNode" type="Node" parent="Player/SectionSpawner"]
 script = ExtResource("8_muem4")
 group_name = "Main"
-metadata/_custom_type_script = "uid://b255w0k83u24a"
 
 [node name="DirectoryScenes" type="Node" parent="Player/SectionSpawner"]
 script = ExtResource("10_muem4")
@@ -419,6 +495,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_gqmmt")
 script = ExtResource("1_jyhfs")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
@@ -436,7 +513,8 @@ theme_override_constants/margin_bottom = 50
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/MarginContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-max_value = 120.0
+max_value = 30.0
+value = 30.0
 show_percentage = false
 
 [node name="Node" type="Node" parent="CanvasLayer/Control/MarginContainer/ProgressBar"]
@@ -459,7 +537,6 @@ input = NodePath("../../../../../Timer")
 metadata/_custom_type_script = "uid://b0d5lr3imvsb5"
 
 [node name="Pause" type="MarginContainer" parent="CanvasLayer/Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -480,17 +557,14 @@ layout_mode = 2
 script = ExtResource("6_tefeu")
 update_mouse_mode = 2
 update = true
-metadata/_custom_type_script = "uid://c8v3384bf3aau"
 
 [node name="PauseUnpause" type="Node" parent="CanvasLayer/Control/Pause"]
 script = ExtResource("7_tipki")
 animation = "pause"
-metadata/_custom_type_script = "uid://d0kkqlrbgvvua"
 
 [node name="PauseInput" type="Node" parent="CanvasLayer/Control/Pause"]
 script = ExtResource("8_tipki")
 input_name = "Pause"
-metadata/_custom_type_script = "uid://cfoo2dw202481"
 
 [node name="AndBool" type="Node" parent="CanvasLayer/Control/Pause/PauseInput" node_paths=PackedStringArray("inputs")]
 script = ExtResource("9_ya4ey")
@@ -502,8 +576,16 @@ script = ExtResource("10_eb6dy")
 input = NodePath("../../../../AnimationPlayer/Playing")
 metadata/_custom_type_script = "uid://bt66px7dxwvem"
 
+[node name="Label" type="Label" parent="CanvasLayer/Control/Pause"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 41
+text = "PAUSED
+Press Esc to Unpause."
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Lose" type="Panel" parent="CanvasLayer/Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -520,10 +602,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Lose/MarginContainer"]
 layout_mode = 2
@@ -532,20 +614,20 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 66
-text = "You ran out of energy!"
+text = "You ran out of energy..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="CanvasLayer/Control/Lose/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 theme_override_font_sizes/font_size = 46
 text = "Try Again"
 
 [node name="PlayerAnimatorBit" type="Node" parent="CanvasLayer/Control/Lose/MarginContainer/VBoxContainer/Button"]
 script = ExtResource("7_tipki")
 animation = "retry"
-metadata/_custom_type_script = "uid://d0kkqlrbgvvua"
 
 [node name="InputBlocker" type="Control" parent="CanvasLayer/Control"]
 visible = false
@@ -577,17 +659,20 @@ metadata/_custom_type_script = "uid://b0d5lr3imvsb5"
 
 [node name="Timer" type="Node" parent="CanvasLayer/Control" groups=["Timer"]]
 script = ExtResource("16_jbj1t")
-max_time = 120.0
-add_amount = 10.0
-time = 50.0
+max_time = 30.0
+add_amount = 4.0
+time = 30.0
 
 [node name="PlayerAnimatorBit" type="Node" parent="CanvasLayer/Control/Timer"]
 script = ExtResource("7_tipki")
 animation = "lose"
-metadata/_custom_type_script = "uid://d0kkqlrbgvvua"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jkv2x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_dp3eg")
+autoplay = true
 
 [connection signal="just_true" from="CanvasLayer/Control/Pause/PauseInput" to="CanvasLayer/Control/Pause/PauseUnpause" method="animate"]
 [connection signal="pressed" from="CanvasLayer/Control/Lose/MarginContainer/VBoxContainer/Button" to="CanvasLayer/Control/Lose/MarginContainer/VBoxContainer/Button/PlayerAnimatorBit" method="animate"]
