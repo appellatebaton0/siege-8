@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	
 	var velo:Vector3 = Vector3.ZERO
 	velo += x_speed *  bot.global_transform.basis.x
-	velo += y_speed *  bot.global_transform.basis.y
+	velo += y_speed * Vector3(0, 1,0 )
 	velo += z_speed * -bot.global_transform.basis.z
 	
 	mover.velocity = velo

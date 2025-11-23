@@ -5,10 +5,7 @@ signal added
 
 @export var max_time := 40.0
 @export var add_amount := 8.0
-var time
-
-func _ready() -> void:
-	reset()
+@export var time := 20.0
 
 func _process(delta: float) -> void:
 	if time > 0: time = move_toward(time, 0, delta)

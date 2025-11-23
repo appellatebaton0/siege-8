@@ -533,7 +533,9 @@ metadata/_custom_type_script = "uid://b0d5lr3imvsb5"
 
 [node name="Timer" type="Node" parent="CanvasLayer/Control" groups=["Timer"]]
 script = ExtResource("16_jbj1t")
-max_time = 6.0
+max_time = 120.0
+add_amount = 10.0
+time = 50.0
 
 [node name="PlayerAnimatorBit" type="Node" parent="CanvasLayer/Control/Timer"]
 script = ExtResource("7_tipki")
