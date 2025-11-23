@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dyklan2ybksqp"]
+[gd_scene load_steps=25 format=3 uid="uid://dyklan2ybksqp"]
 
 [ext_resource type="Script" uid="uid://c7ag7fagyiu31" path="res://scripts/bits/bot.gd" id="1_jyhfs"]
 [ext_resource type="Script" uid="uid://dj3xlex42m68t" path="res://scripts/bits/move/move_master.gd" id="1_sugp2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bf6q85vc8ov3v" path="res://scripts/bits/camera.gd" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://b3se72sg5yno4" path="res://scripts/bits/move/straight.gd" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://c8v3384bf3aau" path="res://scripts/bits/mouse_capture.gd" id="6_tefeu"]
+[ext_resource type="Script" uid="uid://p3bkyn60vkty" path="res://scripts/bits/section_spawner.gd" id="7_a8y0u"]
 [ext_resource type="Script" uid="uid://b0d5lr3imvsb5" path="res://scripts/values/node/manual.gd" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://d0kkqlrbgvvua" path="res://scripts/bits/player_animator.gd" id="7_tipki"]
 [ext_resource type="Script" uid="uid://cfoo2dw202481" path="res://scripts/bits/input.gd" id="8_tipki"]
@@ -17,6 +18,8 @@
 [sub_resource type="SphereMesh" id="SphereMesh_tbgi4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tefeu"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_a8y0u"]
 
 [sub_resource type="Animation" id="Animation_o6xl0"]
 length = 0.001
@@ -230,12 +233,12 @@ sky = SubResource("Sky_a8y0u")
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_trceg")
 data = {
-"cells": PackedInt32Array(-65536, 65535, 2, -65535, 65535, 2, -65535, 0, 2, -65534, 0, 2, -65535, 1, 2, -65536, 1, 2, -65536, 2, 2, -1, 2, 2, -1, 1, 2, -1, 0, 2, -1, 65535, 2, -1, 65534, 2, -65536, 65534, 2, -65535, 65534, 2, -65534, 65535, 2, -2, 1, 2, -2, 0, 2, -2, 65535, 2, -2, 65534, 2, -65535, 2, 2, -65536, 0, 2, -3, 2, 2, -3, 1, 2, -3, 0, 2, -3, 65535, 2, -3, 65534, 2, 1, 2, 2, 0, 2, 2, 65535, 2, 2, 65533, 2, 2, 65534, 2, 2, 2, 0, 131072, 65538, 0, 131073, 65537, 0, 1114112, 65536, 0, 1114112, 131071, 0, 1114112, 131070, 0, 1114112, 131069, 0, 1114112, 131069, 1, 1114112, 131068, 1, 1114112, 131068, 2, 1114112)
+"cells": PackedInt32Array(0, 0, 1114114, 0, 1, 1114114, 0, 2, 1114114, 0, 3, 1114114, 0, 4, 1114114, 0, 5, 1114114, 0, 6, 1114114, 65536, 0, 1114113, 65536, 6, 1114113, 131072, 0, 1114113, 131072, 6, 1114113, 196608, 0, 1114113, 196608, 6, 1114113, 262144, 0, 1114113, 262144, 6, 1114113, 327680, 0, 1114113, 327680, 6, 1114113, 393216, 0, 1114113, 393216, 1, 1114113, 393216, 2, 1114113, 393216, 3, 1114113, 393216, 4, 1114113, 393216, 5, 1114113, 393216, 6, 1114113, 1, 0, 1114114, 1, 1, 1114114, 1, 2, 1114114, 1, 3, 1114114, 1, 4, 1114114, 1, 5, 2, 1, 6, 1114114, 393217, 0, 1114113, 393217, 1, 1114113, 393217, 2, 1114113, 393217, 3, 1114113, 393217, 4, 1114113, 393217, 5, 1114113, 393217, 6, 1114113, 2, 0, 1114114, 2, 1, 1114114, 2, 2, 1114114, 2, 3, 2, 2, 4, 1114114, 2, 5, 1114114, 2, 6, 1114114, 393218, 0, 1114113, 393218, 1, 1114113, 393218, 2, 1114113, 393218, 3, 1114113, 393218, 4, 1114113, 393218, 5, 1114113, 393218, 6, 1114113, 3, 0, 1114114, 3, 1, 1114114, 3, 2, 1114114, 3, 3, 1114114, 3, 4, 1114114, 3, 5, 1114114, 3, 6, 1114114, 393219, 0, 1114113, 393219, 1, 1114113, 393219, 2, 1114113, 393219, 3, 1114113, 393219, 4, 1114113, 393219, 5, 1114113, 393219, 6, 1114113, 4, 0, 1114114, 4, 1, 1114114, 4, 2, 2, 4, 3, 1114114, 4, 4, 2, 4, 5, 2, 4, 6, 1114114, 393220, 0, 1114113, 393220, 1, 1114113, 393220, 2, 1114113, 393220, 3, 1114113, 393220, 4, 1114113, 393220, 5, 1114113, 393220, 6, 1114113, 5, 0, 1114114, 5, 1, 1114114, 5, 2, 2, 5, 3, 2, 5, 4, 2, 5, 5, 2, 5, 6, 1114114, 393221, 0, 1114113, 393221, 1, 1114113, 393221, 2, 1114113, 393221, 3, 1114113, 393221, 4, 1114113, 393221, 5, 1114113, 393221, 6, 1114113, 6, 0, 1114114, 6, 1, 1114114, 6, 2, 1114114, 6, 3, 1114114, 6, 4, 2, 6, 5, 1114114, 6, 6, 1114114, 65542, 0, 1114113, 65542, 6, 1114114, 131078, 0, 1114113, 131078, 6, 1114113, 196614, 0, 1114113, 196614, 6, 1114113, 262150, 0, 1114113, 262150, 6, 1114113, 327686, 0, 1114113, 327686, 6, 1114113, 393222, 0, 1114113, 393222, 1, 1114113, 393222, 2, 1114113, 393222, 3, 1114113, 393222, 4, 1114113, 393222, 5, 1114113, 393222, 6, 1114113)
 }
-metadata/_editor_floor_ = Vector3(0, 1, 0)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5950165, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.5950165, 0)
 motion_mode = 1
 script = ExtResource("1_jyhfs")
 
@@ -266,6 +269,12 @@ shape = SubResource("SphereShape3D_tefeu")
 [node name="SpotLight3D" type="SpotLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.22921714)
 shadow_enabled = true
+
+[node name="SectionSpawner" type="Node3D" parent="Player"]
+script = ExtResource("7_a8y0u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/SectionSpawner"]
+mesh = SubResource("SphereMesh_a8y0u")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
