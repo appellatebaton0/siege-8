@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dyklan2ybksqp"]
+[gd_scene load_steps=25 format=3 uid="uid://dyklan2ybksqp"]
 
 [ext_resource type="Script" uid="uid://c7ag7fagyiu31" path="res://scripts/bits/bot.gd" id="1_jyhfs"]
 [ext_resource type="Script" uid="uid://dj3xlex42m68t" path="res://scripts/bits/move/move_master.gd" id="1_sugp2"]
@@ -19,8 +19,6 @@
 [sub_resource type="SphereMesh" id="SphereMesh_tbgi4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tefeu"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_a8y0u"]
 
 [sub_resource type="Animation" id="Animation_o6xl0"]
 length = 0.001
@@ -277,9 +275,6 @@ omni_range = 1200.0
 script = ExtResource("7_a8y0u")
 spawn_width = 4
 clear_width = 5
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/SectionSpawner"]
-mesh = SubResource("SphereMesh_a8y0u")
 
 [node name="GroupNode" type="Node" parent="Player/SectionSpawner"]
 script = ExtResource("8_muem4")
