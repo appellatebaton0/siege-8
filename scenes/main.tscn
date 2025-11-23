@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dyklan2ybksqp"]
+[gd_scene load_steps=28 format=3 uid="uid://dyklan2ybksqp"]
 
 [ext_resource type="Script" uid="uid://c7ag7fagyiu31" path="res://scripts/bits/bot.gd" id="1_jyhfs"]
 [ext_resource type="Script" uid="uid://dj3xlex42m68t" path="res://scripts/bits/move/move_master.gd" id="1_sugp2"]
@@ -33,7 +33,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [2]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -57,7 +57,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["unpause"]
+"values": ["pause"]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -81,7 +81,19 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0, -648)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Lose:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -648)]
 }
 
 [sub_resource type="Animation" id="Animation_tbgi4"]
@@ -212,10 +224,116 @@ tracks/4/keys = {
 "values": [Vector2(0, 0), Vector2(0, -648)]
 }
 
+[sub_resource type="Animation" id="Animation_jbj1t"]
+resource_name = "retry"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lose:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InputBlocker:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pause/MouseCapturer:update_mouse_mode")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pause/MouseCapturer:update")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_muem4"]
+resource_name = "lose"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lose:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InputBlocker:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pause/MouseCapturer:update_mouse_mode")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pause/MouseCapturer:update")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o6xl0"]
 _data = {
 &"RESET": SubResource("Animation_o6xl0"),
+&"lose": SubResource("Animation_muem4"),
 &"pause": SubResource("Animation_tbgi4"),
+&"retry": SubResource("Animation_jbj1t"),
 &"unpause": SubResource("Animation_tefeu")
 }
 
@@ -303,6 +421,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -648.0
+offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 40
@@ -315,13 +435,13 @@ layout_mode = 2
 
 [node name="MouseCapturer" type="Node" parent="CanvasLayer/Control/Pause"]
 script = ExtResource("6_tefeu")
-update_mouse_mode = 0
+update_mouse_mode = 2
 update = true
 metadata/_custom_type_script = "uid://c8v3384bf3aau"
 
 [node name="PauseUnpause" type="Node" parent="CanvasLayer/Control/Pause"]
 script = ExtResource("7_tipki")
-animation = "unpause"
+animation = "pause"
 metadata/_custom_type_script = "uid://d0kkqlrbgvvua"
 
 [node name="PauseInput" type="Node" parent="CanvasLayer/Control/Pause"]
@@ -339,15 +459,17 @@ script = ExtResource("10_eb6dy")
 input = NodePath("../../../../AnimationPlayer/Playing")
 metadata/_custom_type_script = "uid://bt66px7dxwvem"
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+[node name="Lose" type="Panel" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -648.0
+offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/Lose"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -359,10 +481,10 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Lose/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/Panel/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/Lose/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 66
@@ -370,11 +492,16 @@ text = "You ran out of energy!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/Control/Panel/MarginContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/Control/Lose/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 46
 text = "Try Again"
+
+[node name="PlayerAnimatorBit" type="Node" parent="CanvasLayer/Control/Lose/MarginContainer/VBoxContainer/Button"]
+script = ExtResource("7_tipki")
+animation = "retry"
+metadata/_custom_type_script = "uid://d0kkqlrbgvvua"
 
 [node name="InputBlocker" type="Control" parent="CanvasLayer/Control"]
 visible = false
@@ -399,15 +526,23 @@ script = ExtResource("10_ya4ey")
 property_name = "is_playing()"
 metadata/_custom_type_script = "uid://5h7ohal2js4w"
 
-[node name="ManualNode" type="Node" parent="CanvasLayer/Control/AnimationPlayer/Playing/IsPlaying" node_paths=PackedStringArray("input")]
+[node name="Player" type="Node" parent="CanvasLayer/Control/AnimationPlayer/Playing/IsPlaying" node_paths=PackedStringArray("input")]
 script = ExtResource("7_o6xl0")
 input = NodePath("../../..")
 metadata/_custom_type_script = "uid://b0d5lr3imvsb5"
 
-[node name="Timer" type="Node" parent="CanvasLayer/Control"]
+[node name="Timer" type="Node" parent="CanvasLayer/Control" groups=["Timer"]]
 script = ExtResource("16_jbj1t")
+max_time = 6.0
+
+[node name="PlayerAnimatorBit" type="Node" parent="CanvasLayer/Control/Timer"]
+script = ExtResource("7_tipki")
+animation = "lose"
+metadata/_custom_type_script = "uid://d0kkqlrbgvvua"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jkv2x")
 
 [connection signal="just_true" from="CanvasLayer/Control/Pause/PauseInput" to="CanvasLayer/Control/Pause/PauseUnpause" method="animate"]
+[connection signal="pressed" from="CanvasLayer/Control/Lose/MarginContainer/VBoxContainer/Button" to="CanvasLayer/Control/Lose/MarginContainer/VBoxContainer/Button/PlayerAnimatorBit" method="animate"]
+[connection signal="reached_zero" from="CanvasLayer/Control/Timer" to="CanvasLayer/Control/Timer/PlayerAnimatorBit" method="animate"]
