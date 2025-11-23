@@ -61,7 +61,7 @@ func _ready() -> void:
 	real_options = options.value()
 	real_parent  = parent.value()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	fill_space()
 	clear_space()
 	
