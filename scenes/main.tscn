@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dyklan2ybksqp"]
+[gd_scene load_steps=29 format=3 uid="uid://dyklan2ybksqp"]
 
 [ext_resource type="Script" uid="uid://c7ag7fagyiu31" path="res://scripts/bits/bot.gd" id="1_jyhfs"]
 [ext_resource type="Script" uid="uid://dj3xlex42m68t" path="res://scripts/bits/move/move_master.gd" id="1_sugp2"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://b255w0k83u24a" path="res://scripts/values/node/group.gd" id="8_muem4"]
 [ext_resource type="Script" uid="uid://cfoo2dw202481" path="res://scripts/bits/input.gd" id="8_tipki"]
 [ext_resource type="Script" uid="uid://ddp5ul27gxmac" path="res://scripts/values/bool/cast.gd" id="9_choun"]
+[ext_resource type="Script" uid="uid://c71wnn3fi6nxv" path="res://scripts/bits/replacer.gd" id="9_muem4"]
 [ext_resource type="Script" uid="uid://b1tqakminffgo" path="res://scripts/values/bool/and.gd" id="9_ya4ey"]
 [ext_resource type="Script" uid="uid://bt66px7dxwvem" path="res://scripts/values/bool/not.gd" id="10_eb6dy"]
 [ext_resource type="Script" uid="uid://0cyqblctuuol" path="res://scripts/values/scenes/directory.gd" id="10_muem4"]
@@ -346,9 +347,13 @@ sky_material = SubResource("ProceduralSkyMaterial_trceg")
 background_mode = 2
 sky = SubResource("Sky_a8y0u")
 fog_enabled = true
+fog_mode = 1
 fog_light_color = Color(0.22439998, 0.26871333, 0.34, 1)
 fog_light_energy = 3.58
-fog_density = 0.06
+fog_density = 1.0
+fog_depth_curve = 0.5358885
+fog_depth_begin = 0.0
+fog_depth_end = 40.0
 
 [node name="Main" type="Node" groups=["Main"]]
 
@@ -416,7 +421,45 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jyhfs")
 
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/MarginContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+max_value = 120.0
+show_percentage = false
+
+[node name="Node" type="Node" parent="CanvasLayer/Control/MarginContainer/ProgressBar"]
+script = ExtResource("9_muem4")
+property = "value"
+
+[node name="ManualNode" type="Node" parent="CanvasLayer/Control/MarginContainer/ProgressBar/Node" node_paths=PackedStringArray("input")]
+script = ExtResource("7_o6xl0")
+input = NodePath("../..")
+metadata/_custom_type_script = "uid://b0d5lr3imvsb5"
+
+[node name="PropertyValue" type="Node" parent="CanvasLayer/Control/MarginContainer/ProgressBar/Node"]
+script = ExtResource("10_ya4ey")
+property_name = "time"
+metadata/_custom_type_script = "uid://5h7ohal2js4w"
+
+[node name="ManualNode" type="Node" parent="CanvasLayer/Control/MarginContainer/ProgressBar/Node/PropertyValue" node_paths=PackedStringArray("input")]
+script = ExtResource("7_o6xl0")
+input = NodePath("../../../../../Timer")
+metadata/_custom_type_script = "uid://b0d5lr3imvsb5"
+
 [node name="Pause" type="MarginContainer" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -460,6 +503,7 @@ input = NodePath("../../../../AnimationPlayer/Playing")
 metadata/_custom_type_script = "uid://bt66px7dxwvem"
 
 [node name="Lose" type="Panel" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
