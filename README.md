@@ -2,6 +2,7 @@
 A survival game made for Hackclub's Siege Week 8.
 The theme this week was Framework.
 
+[Demo Video HERE](assets/videos/demo.mp4)
 <img src="assets/screenshots/gameplay.png">
 
 ---
@@ -45,10 +46,10 @@ The theme this week was Framework.
 - Made the world procedurally generate around the player, and added some fog so you can't see where it ends.
 - <img src="assets/screenshots/section.png" width="50%"><img src="assets/screenshots/fog.png" width="50%">
 - Added a timer you have to keep topped up by collected pellets.
-    - Added Pellet model
-    - <img src="assets/screenshots/pellet.png" width="50%">
-    - Added pellet section
-    - Added timer bar / lose screen
+	- Added Pellet model
+	- <img src="assets/screenshots/pellet.png" width="50%">
+	- Added pellet section
+	- Added timer bar / lose screen
 - Touched up all the UI
 - Added ambient music and a sound effect for picking up pellets.
 - Added this README.

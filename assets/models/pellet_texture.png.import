@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cant84yu2wrgr"
 path.s3tc="res://.godot/imported/pellet_texture.png-dbeafd85234e90364139e262fd02cfe8.s3tc.ctex"
+path.etc2="res://.godot/imported/pellet_texture.png-dbeafd85234e90364139e262fd02cfe8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/pellet_texture.png"
-dest_files=["res://.godot/imported/pellet_texture.png-dbeafd85234e90364139e262fd02cfe8.s3tc.ctex"]
+dest_files=["res://.godot/imported/pellet_texture.png-dbeafd85234e90364139e262fd02cfe8.s3tc.ctex", "res://.godot/imported/pellet_texture.png-dbeafd85234e90364139e262fd02cfe8.etc2.ctex"]
 
 [params]
 
