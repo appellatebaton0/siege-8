@@ -2,7 +2,8 @@
 A survival game made for Hackclub's Siege Week 8.
 The theme this week was Framework.
 
-<video src="assets/videos/demo.mp4" width="320" height="240" controls></video>
+
+<video src="https://github.com/user-attachments/assets/dc4bdf8c-1582-4313-b656-d4d03423a871" width="320" height="240" controls></video>
 <img src="assets/screenshots/gameplay.png">
 
 ---
